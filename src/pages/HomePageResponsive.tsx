@@ -1,4 +1,4 @@
-import { FunctionComponent, useEffect } from "react";
+import { FunctionComponent, useCallback, useEffect } from "react";
 import {
   Button,
   TextField,
@@ -6,7 +6,7 @@ import {
   Icon,
   IconButton,
 } from "@mui/material";
-import "./HomePageResponsive.css";
+import styles from "./HomePageResponsive.module.css";
 
 const HomePageResponsive: FunctionComponent = () => {
   useEffect(() => {
@@ -18,7 +18,7 @@ const HomePageResponsive: FunctionComponent = () => {
         for (const entry of entries) {
           if (entry.isIntersecting || entry.intersectionRatio > 0) {
             const targetElement = entry.target;
-            targetElement.classList.add("animate");
+            targetElement.classList.add(styles.animate);
             observer.unobserve(targetElement);
           }
         }
@@ -38,17 +38,27 @@ const HomePageResponsive: FunctionComponent = () => {
       }
     };
   }, []);
+
+  const onHeaderLinksContainerClick = useCallback(() => {
+    const anchor = document.querySelector(
+      "[data-scroll-to='shareYourTravelsSection']"
+    );
+    if (anchor) {
+      anchor.scrollIntoView({ block: "end", behavior: "smooth" });
+    }
+  }, []);
+
   return (
-    <div className="home-page-responsive">
-      <div className="header-section">
-        <div className="header-elements-row">
-          <button className="header-logo" data-animate-on-scroll>
-            <img className="vector-icon" alt="" src="/vector.svg" />
-            <img className="vector-icon1" alt="" src="/vector1.svg" />
+    <div className={styles.homePageResponsive}>
+      <div className={styles.headerSection}>
+        <div className={styles.headerElementsRow}>
+          <button className={styles.headerLogo} data-animate-on-scroll>
+            <img className={styles.vectorIcon} alt="" src="/vector.svg" />
+            <img className={styles.vectorIcon1} alt="" src="/vector1.svg" />
           </button>
-          <div className="header-menu-options-row" data-animate-on-scroll>
+          <div className={styles.headerMenuOptionsRow} data-animate-on-scroll>
             <Button
-              className="header-menu-options-row-child"
+              className={styles.headerMenuOptionsRowChild}
               sx={{ width: 118 }}
               color="secondary"
               variant="text"
@@ -56,7 +66,7 @@ const HomePageResponsive: FunctionComponent = () => {
               Home
             </Button>
             <Button
-              className="header-menu-options-row-child"
+              className={styles.headerMenuOptionsRowChild}
               sx={{ width: 118 }}
               color="secondary"
               variant="text"
@@ -64,16 +74,19 @@ const HomePageResponsive: FunctionComponent = () => {
               Our Team
             </Button>
             <Button
-              className="header-menu-options-row-child"
+              className={styles.headerMenuOptionsRowChild}
               sx={{ width: 118 }}
               color="secondary"
               variant="text"
             >
               BLOG
             </Button>
-            <div className="header-links">
+            <div
+              className={styles.headerLinks}
+              onClick={onHeaderLinksContainerClick}
+            >
               <Button
-                className="contact-us"
+                className={styles.contactUs}
                 sx={{ width: 151.9 }}
                 color="secondary"
                 variant="contained"
@@ -84,131 +97,143 @@ const HomePageResponsive: FunctionComponent = () => {
           </div>
         </div>
       </div>
-      <div className="main-section">
+      <div className={styles.mainSection}>
         <img
-          className="hero-background-image"
+          className={styles.heroBackgroundImage}
           alt=""
           src="/hero-background-image@2x.png"
         />
-        <div className="main-container">
-          <div className="main-content-container">
-            <div className="main-texts">
-              <div className="main-title">
-                <p className="empowering-digital-transformat">
-                  <span className="empowering-digital">{`Empowering Digital `}</span>
+        <div className={styles.mainContainer}>
+          <div className={styles.mainContentContainer}>
+            <div className={styles.mainTexts}>
+              <div className={styles.mainTitle}>
+                <p className={styles.empoweringDigitalTransformat}>
+                  <span
+                    className={styles.empoweringDigital}
+                  >{`Empowering Digital `}</span>
                   <span>Transformation</span>
                 </p>
-                <p className="empowering-digital-transformat">
+                <p className={styles.empoweringDigitalTransformat}>
                   Your IT Consulting Partner
                 </p>
               </div>
-              <div className="main-description">
+              <div className={styles.mainDescription}>
                 Turning Your IT Dreams into Reality
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div className="featured-destination-section">
-        <div className="featured-image-container">
+      <div className={styles.featuredDestinationSection}>
+        <div className={styles.featuredImageContainer}>
           <img
-            className="featured-image-icon"
+            className={styles.featuredImageIcon}
             alt=""
             src="/featured-image@2x.png"
             data-animate-on-scroll
           />
         </div>
-        <div className="featured-destination-blurb">
-          <div className="featured-destination-copywriti">
-            <div className="featured-destination-title">Who we are ?</div>
-            <div className="featured-destination-descripti-container">
-              <span className="we-are-a">We are a highly skilled team of</span>
+        <div className={styles.featuredDestinationBlurb}>
+          <div className={styles.featuredDestinationCopywriti}>
+            <div className={styles.featuredDestinationTitle}>Who we are ?</div>
+            <div className={styles.featuredDestinationDescriptiContainer}>
+              <span className={styles.weAreA}>
+                We are a highly skilled team of
+              </span>
               <b> IT</b>
-              <span className="we-are-a">{` `}</span>
+              <span className={styles.weAreA}>{` `}</span>
               <b>architects</b>
-              <span className="we-are-a">{`, `}</span>
+              <span className={styles.weAreA}>{`, `}</span>
               <b>DevOps experts</b>
-              <span className="we-are-a">{`, `}</span>
+              <span className={styles.weAreA}>{`, `}</span>
               <b>backend</b>
-              <span className="we-are-a">{` and `}</span>
+              <span className={styles.weAreA}>{` and `}</span>
               <b>frontend developers, and designers</b>
-              <span className="we-are-a">{`. Our mission is to provide `}</span>
+              <span
+                className={styles.weAreA}
+              >{`. Our mission is to provide `}</span>
               <b>expert guidance</b>
-              <span className="we-are-a">{` and `}</span>
+              <span className={styles.weAreA}>{` and `}</span>
               <b>consulting services</b>
-              <span className="we-are-a">{` to help your company bring your `}</span>
+              <span
+                className={styles.weAreA}
+              >{` to help your company bring your `}</span>
               <b>digital projects</b>
-              <span className="we-are-a">{` to life. Whether you're a `}</span>
+              <span
+                className={styles.weAreA}
+              >{` to life. Whether you're a `}</span>
               <b>startup</b>
-              <span className="we-are-a">{`, a `}</span>
+              <span className={styles.weAreA}>{`, a `}</span>
               <b>small business</b>
-              <span className="we-are-a">{`, or a `}</span>
+              <span className={styles.weAreA}>{`, or a `}</span>
               <b>large enterprise</b>
-              <span className="we-are-a">{`, we have the `}</span>
+              <span className={styles.weAreA}>{`, we have the `}</span>
               <b>expertise</b>
-              <span className="we-are-a">{` to `}</span>
+              <span className={styles.weAreA}>{` to `}</span>
               <b>empower</b>
-              <span className="we-are-a">{` your success in the `}</span>
+              <span className={styles.weAreA}>{` your success in the `}</span>
               <b>digital realm</b>
-              <span className="we-are-a">.</span>
+              <span className={styles.weAreA}>.</span>
             </div>
           </div>
         </div>
       </div>
-      <div className="discover-the-world-section">
-        <div className="discover-the-world-header">
-          <b className="discover-the-world">Services</b>
-          <b className="discover-the-world1">
+      <div className={styles.discoverTheWorldSection}>
+        <div className={styles.discoverTheWorldHeader}>
+          <b className={styles.discoverTheWorld}>Services</b>
+          <b className={styles.discoverTheWorld1}>
             Tailored Consulting for Digital Excellence
           </b>
         </div>
-        <div className="location-cards-row">
-          <div className="it-arch-parent">
-            <div className="it-arch">
+        <div className={styles.locationCardsRow}>
+          <div className={styles.itArchParent}>
+            <div className={styles.itArch}>
               <img
-                className="iceland-card-image"
+                className={styles.icelandCardImage}
                 alt=""
                 src="/iceland-card-image@2x.png"
                 data-animate-on-scroll
               />
-              <div className="card-title">
-                <div className="it-architecture-planning">
+              <div className={styles.cardTitle}>
+                <div className={styles.itArchitecturePlanning}>
                   {" "}
                   IT Architecture Planning
                 </div>
-                <div className="tailored-it-architecture">
+                <div className={styles.tailoredItArchitecture}>
                   Tailored IT architecture planning to align infrastructure with
                   project objectives.
                 </div>
               </div>
             </div>
-            <div className="devops">
+            <div className={styles.devops}>
               <img
-                className="iceland-card-image"
+                className={styles.icelandCardImage}
                 alt=""
                 src="/italy-card-image@2x.png"
                 data-animate-on-scroll
               />
-              <div className="card-title1">
-                <div className="it-architecture-planning">DevOps Strategy</div>
-                <div className="streamlined-development-and">
+              <div className={styles.cardTitle1}>
+                <div className={styles.itArchitecturePlanning}>
+                  DevOps Strategy
+                </div>
+                <div className={styles.streamlinedDevelopmentAnd}>
                   Streamlined development and deployment processes with
                   automation and collaboration.
                 </div>
               </div>
             </div>
-            <div className="backend">
+            <div className={styles.backend}>
               <img
-                className="iceland-card-image"
+                className={styles.icelandCardImage}
                 alt=""
                 src="/italy-card-image1@2x.png"
                 data-animate-on-scroll
               />
-              <div className="card-title1">
-                <div className="it-architecture-planning">
+              <div className={styles.cardTitle1}>
+                <div className={styles.itArchitecturePlanning}>
                   Backend Development
                 </div>
-                <div className="craft-powerful-and">
+                <div className={styles.craftPowerfulAnd}>
                   Craft powerful and scalable server-side solutions using the
                   latest technologies.
                 </div>
@@ -216,100 +241,102 @@ const HomePageResponsive: FunctionComponent = () => {
             </div>
           </div>
         </div>
-        <div className="it-arch-group">
-          <div className="it-arch1">
+        <div className={styles.itArchGroup}>
+          <div className={styles.itArch1}>
             <img
-              className="iceland-card-image"
+              className={styles.icelandCardImage}
               alt=""
               src="/iceland-card-image1@2x.png"
               data-animate-on-scroll
             />
-            <div className="card-title1">
-              <div className="it-architecture-planning">
+            <div className={styles.cardTitle1}>
+              <div className={styles.itArchitecturePlanning}>
                 Frontend Development
               </div>
-              <div className="create-user-friendly-and">
+              <div className={styles.createUserFriendlyAnd}>
                 Create user-friendly and visually appealing interfaces for
                 seamless user experiences.
               </div>
             </div>
           </div>
-          <div className="devops1">
+          <div className={styles.devops1}>
             <img
-              className="iceland-card-image"
+              className={styles.icelandCardImage}
               alt=""
               src="/italy-card-image2@2x.png"
               data-animate-on-scroll
             />
-            <div className="card-title4">
-              <div className="it-architecture-planning">UX Design</div>
-              <div className="design-intuitive-and">
+            <div className={styles.cardTitle4}>
+              <div className={styles.itArchitecturePlanning}>UX Design</div>
+              <div className={styles.designIntuitiveAnd}>
                 Design intuitive and engaging user experiences through research
                 and wireframes.
               </div>
             </div>
           </div>
-          <div className="backend1">
+          <div className={styles.backend1}>
             <img
-              className="iceland-card-image"
+              className={styles.icelandCardImage}
               alt=""
               src="/italy-card-image3@2x.png"
               data-animate-on-scroll
             />
-            <div className="card-title1">
-              <div className="project-consulting">Project Consulting</div>
-              <div className="comprehensive-consulting-for">
+            <div className={styles.cardTitle1}>
+              <div className={styles.projectConsulting}>Project Consulting</div>
+              <div className={styles.comprehensiveConsultingFor}>
                 Comprehensive consulting for technology choices, scope, and risk
                 management.
               </div>
             </div>
           </div>
         </div>
-        <div className="it-arch-group">
-          <div className="it-arch1">
+        <div className={styles.itArchGroup}>
+          <div className={styles.itArch1}>
             <img
-              className="iceland-card-image"
+              className={styles.icelandCardImage}
               alt=""
               src="/iceland-card-image2@2x.png"
               data-animate-on-scroll
             />
-            <div className="card-title6">
-              <div className="it-architecture-planning">
+            <div className={styles.cardTitle6}>
+              <div className={styles.itArchitecturePlanning}>
                 Scalability Solutions
               </div>
-              <div className="ensure-efficient-project">
+              <div className={styles.ensureEfficientProject}>
                 Ensure efficient project growth and scalability to meet
                 increased demand.
               </div>
             </div>
           </div>
-          <div className="backend1">
+          <div className={styles.backend1}>
             <img
-              className="iceland-card-image"
+              className={styles.icelandCardImage}
               alt=""
               src="/italy-card-image4@2x.png"
               data-animate-on-scroll
             />
-            <div className="card-title7">
-              <div className="security-consulting">Security Consulting</div>
-              <div className="protect-digital-assets">
+            <div className={styles.cardTitle7}>
+              <div className={styles.securityConsulting}>
+                Security Consulting
+              </div>
+              <div className={styles.protectDigitalAssets}>
                 Protect digital assets through comprehensive security consulting
                 and best practices.
               </div>
             </div>
           </div>
-          <div className="backend1">
+          <div className={styles.backend1}>
             <img
-              className="iceland-card-image"
+              className={styles.icelandCardImage}
               alt=""
               src="/italy-card-image5@2x.png"
               data-animate-on-scroll
             />
-            <div className="card-title8">
-              <div className="it-architecture-planning">
+            <div className={styles.cardTitle8}>
+              <div className={styles.itArchitecturePlanning}>
                 Technology Integration
               </div>
-              <div className="seamlessly-integrate-the">
+              <div className={styles.seamlesslyIntegrateThe}>
                 Seamlessly integrate the latest technologies for compatibility
                 and reliability.
               </div>
@@ -317,30 +344,35 @@ const HomePageResponsive: FunctionComponent = () => {
           </div>
         </div>
       </div>
-      <div className="share-your-travels-section">
+      <div
+        className={styles.shareYourTravelsSection}
+        data-scroll-to="shareYourTravelsSection"
+      >
         <img
-          className="share-your-travels-section-bac"
+          className={styles.shareYourTravelsSectionBac}
           alt=""
           src="/share-your-travels-section-background-image@2x.png"
         />
-        <div className="share-your-travels-form">
-          <div className="form-header">
-            <b className="form-title-subtext">Let’s Make your dream true</b>
-            <div className="form-title">Make your project real</div>
+        <div className={styles.shareYourTravelsForm}>
+          <div className={styles.formHeader}>
+            <b className={styles.formTitleSubtext}>
+              Let’s Make your dream true
+            </b>
+            <div className={styles.formTitle}>Make your project real</div>
           </div>
-          <form className="form">
-            <div className="form-text">
-              <div className="share-your-vision">Share your vision</div>
-              <div className="share-your-innovative">
+          <form className={styles.form}>
+            <div className={styles.formText}>
+              <div className={styles.shareYourVision}>Share your vision</div>
+              <div className={styles.shareYourInnovative}>
                 Share your innovative concept by completing the form below, and
                 our dedicated sales team will reach out to you within the next
                 48 hours!
               </div>
             </div>
-            <div className="form-fields">
-              <div className="destination-name-input">
+            <div className={styles.formFields}>
+              <div className={styles.destinationNameInput}>
                 <TextField
-                  className="input"
+                  className={styles.input}
                   color="primary"
                   label="Destination name"
                   size="medium"
@@ -348,9 +380,9 @@ const HomePageResponsive: FunctionComponent = () => {
                   type="text"
                 />
               </div>
-              <div className="destination-name-input">
+              <div className={styles.destinationNameInput}>
                 <TextField
-                  className="input"
+                  className={styles.input}
                   color="primary"
                   label="Your name"
                   size="medium"
@@ -358,9 +390,9 @@ const HomePageResponsive: FunctionComponent = () => {
                   type="text"
                 />
               </div>
-              <div className="destination-name-input">
+              <div className={styles.destinationNameInput}>
                 <TextField
-                  className="input"
+                  className={styles.input}
                   color="primary"
                   label="Your name"
                   size="medium"
@@ -368,9 +400,9 @@ const HomePageResponsive: FunctionComponent = () => {
                   type="text"
                 />
               </div>
-              <div className="destination-name-input">
+              <div className={styles.destinationNameInput}>
                 <TextField
-                  className="input3"
+                  className={styles.input3}
                   color="primary"
                   rows={4}
                   label="Describe what kind of photos you want to focus on"
@@ -379,17 +411,21 @@ const HomePageResponsive: FunctionComponent = () => {
                 />
               </div>
             </div>
-            <button className="form-submit-button">
-              <div className="submit">Submit</div>
+            <button className={styles.formSubmitButton}>
+              <div className={styles.submit}>Submit</div>
             </button>
           </form>
         </div>
       </div>
-      <div className="footer">
-        <div className="copyright-information">
+      <div className={styles.footer}>
+        <div className={styles.copyrightInformation}>
           © 2023, Digital Crafters. All Rights Reserved.
         </div>
-        <img className="footer-links-icon" alt="" src="/footer-links.svg" />
+        <img
+          className={styles.footerLinksIcon}
+          alt=""
+          src="/footer-links.svg"
+        />
       </div>
     </div>
   );
