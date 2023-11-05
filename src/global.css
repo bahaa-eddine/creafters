@@ -2,6 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Changa+One:wght@400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap");
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
 body {
@@ -14,10 +15,12 @@ body {
   --font-changa-one: "Changa One";
   --font-montserrat: Montserrat;
   --font-baloo-bhai: "Baloo Bhai";
+  --text-14px-regular: Inter;
 
   /* font sizes */
+  --text-14px-regular-size: 14px;
   --font-size-base: 16px;
-  --font-size-lg: 18px;
+  --text-18px-semibold-size: 18px;
   --font-size-5xl: 24px;
   --font-size-20xl: 39px;
   --font-size-21xl: 40px;
@@ -26,18 +29,36 @@ body {
   /* Colors */
   --color-white: #fff;
   --color-blueviolet-100: #8a53ff;
+  --color-blueviolet-200: #5922ce;
+  --color-slategray-100: #5f6980;
+  --color-slategray-200: #576074;
   --color-darkslategray-100: #434343;
+  --color-darkslategray-200: #3e3e59;
+  --color-darkslategray-300: #252b42;
+  --color-whitesmoke-100: #eaecf0;
   --color-dimgray: #737373;
   --color-black: #000;
+  --color-gray: #282828;
 
   /* Gaps */
+  --gap-11xl: 30px;
+  --gap-mid: 17px;
   --gap-3xs: 10px;
+  --gap-7xs: 6px;
+  --gap-mini: 15px;
   --gap-5xs: 8px;
+  --gap-lg: 18px;
+  --gap-13xl: 32px;
+  --gap-base: 16px;
+  --gap-5xl: 24px;
+  --gap-9xs: 4px;
 
   /* Paddings */
+  --padding-13xl: 32px;
   --padding-101xl: 120px;
   --padding-11xl: 30px;
   --padding-61xl: 80px;
+  --padding-10xl: 29px;
   --padding-21xl: 40px;
   --padding-9xl: 28px;
   --padding-5xl: 24px;
@@ -46,8 +67,12 @@ body {
   --padding-41xl: 60px;
   --padding-base: 16px;
   --padding-121xl: 140px;
+  --padding-11xs: 2px;
 
   /* Border radiuses */
+  --br-xs: 12px;
+  --br-9xs: 4px;
   --br-mini: 15px;
   --br-5xs: 8px;
+  --br-81xl: 100px;
 }

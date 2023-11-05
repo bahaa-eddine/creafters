@@ -6,6 +6,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import HomePageResponsive from "./pages/HomePageResponsive";
+import CraftersTeam from "./pages/CraftersTeam";
 
 function App() {
   const action = useNavigationType();
@@ -24,6 +25,10 @@ function App() {
 
     switch (pathname) {
       case "/":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/crafters-team":
         title = "";
         metaDescription = "";
         break;
@@ -46,6 +51,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<HomePageResponsive />} />
+      <Route path="/crafters-team" element={<CraftersTeam />} />
     </Routes>
   );
 }

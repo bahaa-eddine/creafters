@@ -6,9 +6,11 @@ import {
   Icon,
   IconButton,
 } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import styles from "./HomePageResponsive.module.css";
 
 const HomePageResponsive: FunctionComponent = () => {
+  const navigate = useNavigate();
   useEffect(() => {
     const scrollAnimElements = document.querySelectorAll(
       "[data-animate-on-scroll]"
@@ -39,6 +41,10 @@ const HomePageResponsive: FunctionComponent = () => {
     };
   }, []);
 
+  const onRectangleButton1Click = useCallback(() => {
+    navigate("/crafters-team");
+  }, [navigate]);
+
   const onHeaderLinksContainerClick = useCallback(() => {
     const anchor = document.querySelector(
       "[data-scroll-to='shareYourTravelsSection']"
@@ -49,7 +55,7 @@ const HomePageResponsive: FunctionComponent = () => {
   }, []);
 
   return (
-    <div className={styles.homePageResponsive}>
+    <div className={styles.craftersHome}>
       <div className={styles.headerSection}>
         <div className={styles.headerElementsRow}>
           <button className={styles.headerLogo} data-animate-on-scroll>
@@ -74,6 +80,7 @@ const HomePageResponsive: FunctionComponent = () => {
                 sx={{ width: 118 }}
                 color="secondary"
                 variant="text"
+                onClick={onRectangleButton1Click}
               >
                 Our Team
               </Button>
