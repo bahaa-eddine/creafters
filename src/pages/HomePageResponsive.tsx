@@ -88,6 +88,7 @@ const HomePageResponsive: FunctionComponent = () => {
                 className={styles.frameInner}
                 sx={{ width: 118 }}
                 color="secondary"
+                disabled={true}
                 variant="text"
               >
                 BLOG
