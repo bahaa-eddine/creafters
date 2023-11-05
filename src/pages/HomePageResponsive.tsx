@@ -53,40 +53,45 @@ const HomePageResponsive: FunctionComponent = () => {
       <div className={styles.headerSection}>
         <div className={styles.headerElementsRow}>
           <button className={styles.headerLogo} data-animate-on-scroll>
-            <img className={styles.vectorIcon} alt="" src="/vector.svg" />
-            <img className={styles.vectorIcon1} alt="" src="/vector1.svg" />
+            <img
+              className={styles.captureDCran20231105081Icon}
+              alt=""
+              src="/capture-d-cran-20231105-081136removebgpreview-1@2x.png"
+            />
           </button>
           <div className={styles.headerMenuOptionsRow} data-animate-on-scroll>
-            <Button
-              className={styles.headerMenuOptionsRowChild}
-              sx={{ width: 118 }}
-              color="secondary"
-              variant="text"
-            >
-              Home
-            </Button>
-            <Button
-              className={styles.headerMenuOptionsRowChild}
-              sx={{ width: 118 }}
-              color="secondary"
-              variant="text"
-            >
-              Our Team
-            </Button>
-            <Button
-              className={styles.headerMenuOptionsRowChild}
-              sx={{ width: 118 }}
-              color="secondary"
-              variant="text"
-            >
-              BLOG
-            </Button>
+            <div className={styles.vectorParent}>
+              <Button
+                className={styles.frameChild}
+                sx={{ width: 118 }}
+                color="secondary"
+                variant="text"
+              >
+                Home
+              </Button>
+              <Button
+                className={styles.frameItem}
+                sx={{ width: 118 }}
+                color="secondary"
+                variant="text"
+              >
+                Our Team
+              </Button>
+              <Button
+                className={styles.frameInner}
+                sx={{ width: 118 }}
+                color="secondary"
+                variant="text"
+              >
+                BLOG
+              </Button>
+            </div>
             <div
               className={styles.headerLinks}
               onClick={onHeaderLinksContainerClick}
             >
               <Button
-                className={styles.contactUs}
+                className={styles.frameChild}
                 sx={{ width: 151.9 }}
                 color="secondary"
                 variant="contained"

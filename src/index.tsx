@@ -12,7 +12,15 @@ import {
 
 import "./global.css";
 
-const muiTheme = createTheme();
+const muiTheme = createTheme({
+  palette: {
+    secondary: {
+      main: "rgba(138,83,255,1)",
+      light: "rgba(173,134,255,1)",
+      dark: "rgba(96,58,178,1)",
+    },
+  },
+});
 
 const container = document.getElementById("root");
 const root = createRoot(container!);
